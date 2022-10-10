@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 
 {
-    
-    public float speed = 5;
+    public GameManager gm;
+    public float speed;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //remember to fix this 
     }
 
     // Update is called once per frame
@@ -31,14 +31,15 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Coin")
         {
+            gm.IncrementScore(1);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Hazard")
         {
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag == "Hazard")
+            {
+                Destroy(gameObject);
+            }
+
         }
-        
-        //Destroy(gameObject)
-           
     }
 }

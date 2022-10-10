@@ -6,10 +6,11 @@ public class item : MonoBehaviour
 {
     public float speed = 1;
     // Start is called before the first frame update
+
     void Start()
 
     {
-        speed = Random.Range(3, 15);
+        speed = Random.Range(5, 15);
       
     
         
@@ -20,4 +21,13 @@ public class item : MonoBehaviour
     {
         transform.Translate(0, -speed * Time.deltaTime, 0); 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
